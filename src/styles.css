@@ -18,10 +18,11 @@ header{
 }
 
 header h1{
-    font-size: 1.5rem;
+    font-size: 2rem;
     text-align: center;
     display: inline-block;
     flex:2;
+    color: white;
 
 }
 
@@ -34,12 +35,12 @@ header h1{
 
 .jugador .jugador-nombre{
     font-size: 1.5rem;
-    color: white;
+    color: black;
 }
 
 .jugador .jugador-contador{
     font-size: 1rem;
-    color: #e0e0e0;
+    color: black;
 }
 
 
@@ -65,9 +66,18 @@ header h1{
     border: black 2px solid;
     box-shadow: black 2px 2px 5px;
     transition: .12s ease-in;
+    cursor: pointer;
 }
 
-/* Uso de transicion para cambio volteo de carta en js */
+.container .card img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    transition: .12s ease-in;
+    border-radius: 10%;
+}
+
+
 .container .card:active{
     transform: scale(0,1);
 }
@@ -78,5 +88,10 @@ header h1{
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    
+}
+
+.container .card.facedown img{
+    display: none;
 }
 

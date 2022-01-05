@@ -6,6 +6,8 @@ const NameJugador2=document.getElementById('nombreJugador2');
 const CountJugador1=document.getElementById('conteoJugador1');
 const CountJugador2=document.getElementById('conteoJugador2');
 
+const cartas=document.querySelectorAll('.container .card')
+
 let conteoJugaodr1;
 let conteoJugaodr2;
 
@@ -18,6 +20,15 @@ const htmlNames=()=>{
     
 }
 
+const events=()=>{
+
+    cartas.forEach(carta=>{
+        carta.addEventListener('click',()=>{
+            carta.classList.toggle('facedown');
+        })
+    })
+
+}
 
 const init=()=>{
     
@@ -28,6 +39,10 @@ const init=()=>{
 
     CountJugador1.innerHTML=conteoJugaodr1;
     CountJugador2.innerHTML=conteoJugaodr2;
+    
+    console.log(cartas);
+
+    events()
     
 }
 
