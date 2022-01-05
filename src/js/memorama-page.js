@@ -1,4 +1,5 @@
 
+
 // Variable de libreria underscores
 let _ = require('underscore');
 
@@ -21,12 +22,13 @@ let turnoPlayer,
     turno,
     parSelectCards;
 
-
+let name1="Carlos", 
+    name2="jaqueline";
 
 
 const htmlNames=()=>{
-    const name1=prompt('Nombre del jugador 1',);
-    const name2=prompt('Nombre del jugador 2',);
+    name1=prompt('Nombre del jugador 1',);
+    name2=prompt('Nombre del jugador 2',);
 
     NameJugador1.innerHTML=(name1)?name1:'Jugador1';
     NameJugador2.innerHTML=(name2)?name2:'Jugador2';
@@ -87,14 +89,15 @@ const game=(SelectCard)=>{
         if(winOrLoseTurn(parSelectCards)){
             points[turnoPlayer]++;
             addpoint();
-            // addpoint();
 
-            // cartas[parSelectCards[0]].style='cursor: not-allowed;';
-            // cartas[parSelectCards[1]].style='cursor: not-allowed;';
-            cartas[parSelectCards[0]].removeEventListener('click',this,false);
-            cartas[parSelectCards[1]].removeEventListener('click',this,false);
-           
-            parSelectCards=[];
+            setTimeout(() => {
+                cartas[parSelectCards[0]].style="transform: scale(0,1);"
+                cartas[parSelectCards[1]].style="transform: scale(0,1);"
+                parSelectCards=[];
+            }, 1500);
+            
+            if(points[0]+points[1]==8) {endGame();}
+
             
         }else{
 
@@ -102,17 +105,16 @@ const game=(SelectCard)=>{
                 cartas[parSelectCards[0]].classList.toggle('facedown');
                 cartas[parSelectCards[1]].classList.toggle('facedown');
                 parSelectCards=[];
-            }, 1500);
-            
                 
+                turnoPlayer=(turnoPlayer) ? 0 : 1 ;
+                changeColorTurno(turnoPlayer);
+            }, 1500);
         }
-        turnoPlayer=(turnoPlayer) ? 0 : 1 ;
-        changeColorTurno(turnoPlayer);
+        
     }
 }
 
 const winOrLoseTurn=([cart1,cart2])=>{
-
     return (deck[cart1]==1 && deck[cart2]==9)?1:
             (deck[cart1]==2 && deck[cart2]==10)?1:
             (deck[cart1]==3 && deck[cart2]==11)?1:
@@ -132,6 +134,15 @@ const winOrLoseTurn=([cart1,cart2])=>{
             0;
 }
 
+const endGame=()=>{
+    if(points[0]==points[1]){
+        console.log("empate");
+    }else if(points[0]>points[2]){
+        console.log(`Gana ${name1}`);
+    }else{
+        console.log(`Gana ${name2}`);
+    }
+}
 
 const addpoint=()=>{
     PointsJugador1.innerHTML=points[0];
@@ -140,7 +151,7 @@ const addpoint=()=>{
 
 const init=()=>{
     
-    // htmlNames();
+    htmlNames();
 
     deck=[];
     initDeck();
