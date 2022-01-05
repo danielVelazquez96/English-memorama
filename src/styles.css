@@ -52,7 +52,7 @@ header h1{
     /* background-color: red; */
     width: 96vw;
     height: 88vh;
-    padding: 2vw;
+    padding: 1vh 2vw;
     /* grid */
     display: grid;
     grid-template-columns: repeat(4,1fr) ;
@@ -93,5 +93,6 @@ header h1{
 
 .container .card.facedown img{
     display: none;
+
 }
 
