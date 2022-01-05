@@ -68,12 +68,13 @@ header h1{
 }
 
 /* Uso de transicion para cambio volteo de carta en js */
-/* .container .card:active{
+.container .card:active{
     transform: scale(0,1);
-} */
+}
 
 .container .card.facedown{
-    background-image: url('/src/assets/img/Facedown.JPG');
+    
+    background-image: url('/src/assets/img/memorama/Facedown.JPG');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
