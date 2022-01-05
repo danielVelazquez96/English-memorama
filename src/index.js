@@ -1,4 +1,4 @@
-import { init } from './js/memorama-page'
+import { init as initMemoramaGame} from './js/memorama-page'
 import './styles.css'
 
-init();
+initMemoramaGame();

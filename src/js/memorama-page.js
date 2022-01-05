@@ -13,6 +13,8 @@ const PointsJugador2=document.getElementById('conteoJugador2');
 const cartas=document.querySelectorAll('.container .card')
 const cartasImg=document.querySelectorAll('.container .card img')
 
+
+
 // Game Variables
 let points=[0,0];
 
@@ -26,6 +28,7 @@ let name1="Carlos",
     name2="jaqueline";
 
 
+//Funcions ---------------------------------------------------------------------------
 const htmlNames=()=>{
     name1=prompt('Nombre del jugador 1',);
     name2=prompt('Nombre del jugador 2',);
@@ -39,7 +42,7 @@ const events=()=>{
     cartas.forEach((carta,index)=>{
 
         carta.addEventListener('click',()=>{
-            carta.classList.toggle('facedown');
+            carta.classList.remove('facedown');
             game(index);
 
         })
@@ -78,42 +81,6 @@ const changeColorTurno=(turno)=>{
     }
 }
 
-
-const game=(SelectCard)=>{
-    turno++;
-    if(!(turno%2==0)){
-        parSelectCards.push(SelectCard);
-    }else{
-        parSelectCards.push(SelectCard);
-        // Validar si acerto o no acerto
-        if(winOrLoseTurn(parSelectCards)){
-            points[turnoPlayer]++;
-            addpoint();
-
-            setTimeout(() => {
-                cartas[parSelectCards[0]].style="transform: scale(0,1);"
-                cartas[parSelectCards[1]].style="transform: scale(0,1);"
-                parSelectCards=[];
-            }, 1500);
-            
-            if(points[0]+points[1]==8) {endGame();}
-
-            
-        }else{
-
-            setTimeout(()=>{
-                cartas[parSelectCards[0]].classList.toggle('facedown');
-                cartas[parSelectCards[1]].classList.toggle('facedown');
-                parSelectCards=[];
-                
-                turnoPlayer=(turnoPlayer) ? 0 : 1 ;
-                changeColorTurno(turnoPlayer);
-            }, 1500);
-        }
-        
-    }
-}
-
 const winOrLoseTurn=([cart1,cart2])=>{
     return (deck[cart1]==1 && deck[cart2]==9)?1:
             (deck[cart1]==2 && deck[cart2]==10)?1:
@@ -135,13 +102,12 @@ const winOrLoseTurn=([cart1,cart2])=>{
 }
 
 const endGame=()=>{
-    if(points[0]==points[1]){
-        console.log("empate");
-    }else if(points[0]>points[2]){
-        console.log(`Gana ${name1}`);
-    }else{
-        console.log(`Gana ${name2}`);
-    }
+    const title=document.querySelector('header h1');
+    title.innerHTML=(points[0]==points[1])?"EMPATE"
+                  :(points[0]>points[2])?`GANA ${name1}`
+                  :(`GANA ${name2}`);
+
+    title.style="text-transform: uppercase;";
 }
 
 const addpoint=()=>{
@@ -149,6 +115,58 @@ const addpoint=()=>{
     PointsJugador2.innerHTML=points[1];
 }
 
+// Funcion main of game----------------------------------------------------------------
+const game=(SelectCard)=>{
+    const containerCard=document.querySelector('.container');
+
+    turno++;
+    if(!(turno%2==0)){
+        parSelectCards.push(SelectCard);
+
+    }else{
+        parSelectCards.push(SelectCard);
+
+        // Validar si acerto o no acerto
+        if(winOrLoseTurn(parSelectCards)){
+            points[turnoPlayer]++;
+            addpoint();
+
+            // event disable
+            containerCard.style.pointerEvents = 'none';
+            setTimeout(() => {
+                
+                cartas[parSelectCards[0]].style="transform: scale(0,1);"
+                cartas[parSelectCards[1]].style="transform: scale(0,1);"
+                parSelectCards=[];
+                
+                // Event re-enable
+                containerCard.style.pointerEvents = 'auto';
+            }, 1500);
+            
+            if(points[0]+points[1]==8) {endGame();}
+
+            
+        }else{
+            // Events disable
+            containerCard.style.pointerEvents = 'none';
+            setTimeout(()=>{
+
+                cartas[parSelectCards[0]].classList.add('facedown');
+                cartas[parSelectCards[1]].classList.add('facedown');
+                parSelectCards=[];
+
+                turnoPlayer=(turnoPlayer) ? 0 : 1 ;
+                changeColorTurno(turnoPlayer);
+
+                // Event re-enable
+                containerCard.style.pointerEvents = 'auto';
+            }, 1500);
+        }
+        
+    }
+}
+
+// Funcion to init--------------------------------------------------------------------
 const init=()=>{
     
     htmlNames();

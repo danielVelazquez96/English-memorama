@@ -6,6 +6,7 @@ body{
     margin: 0;
     padding: 0;
     background-image: linear-gradient(to left bottom, #1d5c5c, #196652, #366e3d, #5c7220, #877000, #9e6a00, #b66000, #cf5102, #d24a02, #d64203, #d93805, #dc2c08);
+
 }
 
 /* Header */
@@ -93,6 +94,6 @@ header h1{
 
 .container .card.facedown img{
     display: none;
-
+    
 }
 
