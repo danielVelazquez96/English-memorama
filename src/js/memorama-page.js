@@ -24,18 +24,20 @@ let turnoPlayer,
     turno,
     parSelectCards;
 
-let name1="Carlos", 
-    name2="jaqueline";
+let name1, 
+    name2;
 
 
 //Funcions ---------------------------------------------------------------------------
 const htmlNames=()=>{
-    name1=prompt('Nombre del jugador 1',);
-    name2=prompt('Nombre del jugador 2',);
+    name1=prompt('Nombre del jugador 1');
+    name2=prompt('Nombre del jugador 2');
 
-    NameJugador1.innerHTML=(name1)?name1:'Jugador1';
-    NameJugador2.innerHTML=(name2)?name2:'Jugador2';
-    
+    name1=(name1)?name1:'Jugador1';
+    name2=(name2)?name2:'Jugador2';
+
+    NameJugador1.innerHTML=name1;
+    NameJugador2.innerHTML=name2;
 }
 
 const events=()=>{
