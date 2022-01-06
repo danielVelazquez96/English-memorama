@@ -29,15 +29,20 @@ let name1,
 
 
 //Funcions ---------------------------------------------------------------------------
-const htmlNames=()=>{
-    name1=prompt('Nombre del jugador 1');
-    name2=prompt('Nombre del jugador 2');
+const setNames=()=>{
+    
+    setTimeout(() => {
+        name1=prompt('Nombre del jugador 1');
+        name2=prompt('Nombre del jugador 2');
 
-    name1=(name1)?name1:'Jugador1';
-    name2=(name2)?name2:'Jugador2';
+        name1=(name1)?name1:'Jugador1';
+        name2=(name2)?name2:'Jugador2';
 
-    NameJugador1.innerHTML=name1;
-    NameJugador2.innerHTML=name2;
+        NameJugador1.innerHTML=name1;
+        NameJugador2.innerHTML=name2;
+    }, 1000);
+
+    
 }
 
 const events=()=>{
@@ -171,7 +176,7 @@ const game=(SelectCard)=>{
 // Funcion to init--------------------------------------------------------------------
 const init=()=>{
     
-    htmlNames();
+    // setNames();
 
     deck=[];
     initDeck();

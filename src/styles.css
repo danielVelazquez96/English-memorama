@@ -6,7 +6,7 @@ body{
     margin: 0;
     padding: 0;
     background-image: linear-gradient(to left bottom, #1d5c5c, #196652, #366e3d, #5c7220, #877000, #9e6a00, #b66000, #cf5102, #d24a02, #d64203, #d93805, #dc2c08);
-
+    caret-color: transparent;
 }
 
 /* Header */
@@ -57,8 +57,8 @@ header h1{
     /* grid */
     display: grid;
     grid-template-columns: repeat(4,1fr) ;
-    grid-template-rows: repeat(4,1fr) ;
-    grid-gap: 10px;
+    grid-template-rows: repeat(4,20.9vh) ;
+    grid-gap: 1vh;
 }
 
 .container .card{
@@ -68,14 +68,16 @@ header h1{
     box-shadow: black 2px 2px 5px;
     transition: .12s ease-in;
     cursor: pointer;
+  
 }
 
 .container .card img{
     object-fit: cover;
     width: 100%;
     height: 100%;
-    transition: .12s ease-in;
+    transition: .3s ease-in;
     border-radius: 10%;
+    
 }
 
 
