@@ -162,7 +162,7 @@ const winOrLoseTurn=([cart1,cart2])=>{
 const endGame=()=>{
     const title=document.querySelector('header h1');
     title.innerHTML=(points[0]==points[1])?"DRAW"
-                  :(points[0]>points[2])?`${name1} WIN`
+                  :(points[0]>points[1])?`${name1} WIN`
                   :(`${name2} WIN`);
 
     title.style="text-transform: uppercase;";
