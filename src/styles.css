@@ -99,3 +99,26 @@ header h1{
     
 }
 
+
+
+@media (orientation: landscape) {
+    
+    /* .container .card img{
+        transform: rotate(90deg);
+    } */
+
+    .container .card.facedown{
+        background-image: url('/src/assets/img/memorama/facedown-landscape.jpg');
+        
+    }
+
+}
+
+/* @media (orientation: landscape) and (min-width:1250px)  {
+    
+    .container .card.facedown{
+        background-repeat: repeat-x;
+        background-size: 50%;
+        background-image: url('/src/assets/img/memorama/Facedown.JPG');
+    }
+} */
