@@ -61,11 +61,11 @@ let name1,
 const setNames=()=>{
     
     setTimeout(() => {
-        name1=prompt('Nombre del jugador 1');
-        name2=prompt('Nombre del jugador 2');
+        name1=prompt('Player 1 name');
+        name2=prompt('Player 2 name');
 
-        name1=(name1)?name1:'Jugador 1';
-        name2=(name2)?name2:'Jugador 2';
+        name1=(name1)?name1:'Player 1';
+        name2=(name2)?name2:'Player 2';
 
         NameJugador1.innerHTML=name1;
         NameJugador2.innerHTML=name2;
@@ -161,9 +161,9 @@ const winOrLoseTurn=([cart1,cart2])=>{
 
 const endGame=()=>{
     const title=document.querySelector('header h1');
-    title.innerHTML=(points[0]==points[1])?"EMPATE"
-                  :(points[0]>points[2])?`GANA ${name1}`
-                  :(`GANA ${name2}`);
+    title.innerHTML=(points[0]==points[1])?"DRAW"
+                  :(points[0]>points[2])?`${name1} WIN`
+                  :(`${name2} WIN`);
 
     title.style="text-transform: uppercase;";
 }
